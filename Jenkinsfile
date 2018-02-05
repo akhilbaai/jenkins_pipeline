@@ -3,6 +3,7 @@ pipeline {
 	
 	environment {
         e = ""
+		root_dir = ""
     }
 	
 	stages {
@@ -13,7 +14,7 @@ pipeline {
 				echo "git check-out success"
 				script {
 					def rootDir = pwd()
-					//echo "Current Directory: " + rootDir
+					root_dir = rootDir
 
 					// point to exact source file
 					def example = load "${rootDir}/resources/Example.Groovy"
@@ -25,7 +26,7 @@ pipeline {
             steps {
 				echo "Build"
 				script {
-					e.shell("make project1")
+					e.shell("make -C ${root_dir} project1")
 				}
             }
         }
