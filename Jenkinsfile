@@ -11,7 +11,7 @@ node {
     println("Current Directory: " + rootDir)
 
     // point to exact source file
-    def example = load "${rootDir}/Example.Groovy"
+    def example = load "${rootDir}/resources/Example.Groovy"
 
     example.exampleMethod()
     example.otherExampleMethod()
