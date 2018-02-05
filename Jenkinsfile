@@ -1,6 +1,10 @@
 pipeline {
 	agent any
 	
+	environment {
+        e = ""
+    }
+	
 	stages {
 	    stage('Init') {
             steps {
@@ -13,6 +17,7 @@ pipeline {
 
 					// point to exact source file
 					def example = load "${rootDir}/resources/Example.Groovy"
+					e = example
 				}
 			}
 		}
@@ -20,7 +25,7 @@ pipeline {
             steps {
 				echo "Build"
 				script {
-					example.shell("make project1")
+					e.shell("make project1")
 				}
             }
         }
