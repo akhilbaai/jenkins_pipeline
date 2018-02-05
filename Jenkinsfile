@@ -18,20 +18,26 @@ pipeline {
 		}
         stage('Build') {
             steps {
-                //example.shell("make project1")
 				echo "Build"
+				script {
+					example.shell("make project1")
+				}
             }
         }
         stage('Test') {
             steps {
-                //example.shell("make project2")
 				echo "Test"
+				script {
+					example.shell("make project2")
+				}
             }
         }
         stage('Deploy') {
             steps {
-                // example.shell("make project3")
 				echo "Deploy"
+				script {
+					example.shell("make project3")
+				}
             }
         }
     }
