@@ -7,7 +7,7 @@ pipeline {
 				// Git checkout before load source the file
 				checkout scm
 
-				//def rootDir = pwd()
+				def rootDir = pwd()
 				//println("Current Directory: " + rootDir)
 
 				// point to exact source file
