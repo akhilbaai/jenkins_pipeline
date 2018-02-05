@@ -1,7 +1,7 @@
-node {	
-    stages {
+pipeline {
+	stages {
 	    stage('Init') {
-            steps {
+            node(node1) {
 				// Git checkout before load source the file
 				checkout scm
 
@@ -13,17 +13,17 @@ node {
 			}
 		}
         stage('Build') {
-            steps {
+            node(node2) {
                 example.shell("make project1")
             }
         }
         stage('Test') {
-            steps {
+            node(node3) {
                 example.shell("make project2")
             }
         }
         stage('Deploy') {
-            steps {
+            node(node3) {
                 example.shell("make project3")
             }
         }
