@@ -34,7 +34,7 @@ pipeline {
             steps {
 				echo "Test"
 				script {
-					example.shell("make project2")
+					e.shell("make -C ${root_dir} project2")
 				}
             }
         }
@@ -42,7 +42,7 @@ pipeline {
             steps {
 				echo "Deploy"
 				script {
-					example.shell("make project3")
+					e.shell("make -C ${root_dir} project3")
 				}
             }
         }
