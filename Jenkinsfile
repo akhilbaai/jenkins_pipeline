@@ -1,15 +1,19 @@
 pipeline {
     agent any
-    // Git checkout before load source the file
-    checkout scm
-
-    def rootDir = pwd()
-    println("Current Directory: " + rootDir)
-
-    // point to exact source file
-    def example = load "${rootDir}/resources/Example.Groovy"
-
+	
     stages {
+	    stage('Init') {
+            steps {
+				// Git checkout before load source the file
+				checkout scm
+
+				def rootDir = pwd()
+				println("Current Directory: " + rootDir)
+
+				// point to exact source file
+				def example = load "${rootDir}/resources/Example.Groovy"
+			}
+		}
         stage('Build') {
             steps {
                 example.shell("make project1")
