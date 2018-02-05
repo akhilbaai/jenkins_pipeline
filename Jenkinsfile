@@ -7,12 +7,13 @@ pipeline {
 				// Git checkout before load source the file
 				checkout scm
 				echo "git check-out success"
-				
-				rootDir = pwd()
-				echo "Current Directory: " + rootDir
+				script {
+					def rootDir = pwd()
+					//echo "Current Directory: " + rootDir
 
-				// point to exact source file
-				//def example = load "${rootDir}/resources/Example.Groovy"
+					// point to exact source file
+					def example = load "${rootDir}/resources/Example.Groovy"
+				}
 			}
 		}
         stage('Build') {
