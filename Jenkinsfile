@@ -1,4 +1,5 @@
-node {
+pipeline {
+    agent any
     // Git checkout before load source the file
     checkout scm
 
@@ -8,7 +9,21 @@ node {
     // point to exact source file
     def example = load "${rootDir}/resources/Example.Groovy"
 
-    example.exampleMethod()
-    example.otherExampleMethod()
-	example.shell("mkdir a")
+    stages {
+        stage('Build') {
+            steps {
+                example.shell("make project1")
+            }
+        }
+        stage('Test') {
+            steps {
+                example.shell("make project2")
+            }
+        }
+        stage('Deploy') {
+            steps {
+                example.shell("make project3")
+            }
+        }
+    }
 }
