@@ -15,10 +15,6 @@ pipeline {
 				script {
 					def rootDir = pwd()
 					root_dir = rootDir
-
-					// point to exact source file
-					//def example = load "${rootDir}/resources/Example.Groovy"
-					//e = example
 				}
 			}
 		}
