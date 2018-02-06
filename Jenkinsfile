@@ -17,8 +17,8 @@ pipeline {
 					root_dir = rootDir
 
 					// point to exact source file
-					def example = load "${rootDir}/resources/Example.Groovy"
-					e = example
+					//def example = load "${rootDir}/resources/Example.Groovy"
+					//e = example
 				}
 			}
 		}
@@ -34,7 +34,7 @@ pipeline {
             steps {
 				echo "Test"
 				script {
-					e.shell("make -C ${root_dir} project2")
+					bat "make -C ${root_dir} project2"
 				}
             }
         }
@@ -42,7 +42,7 @@ pipeline {
             steps {
 				echo "Deploy"
 				script {
-					e.shell("make -C ${root_dir} project3")
+					bat "make -C ${root_dir} project3"
 				}
             }
         }
