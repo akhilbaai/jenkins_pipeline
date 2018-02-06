@@ -26,7 +26,7 @@ pipeline {
             steps {
 				echo "Build"
 				script {
-					e.shell("make -C ${root_dir} project1")
+					sh "make -C ${root_dir} project1"
 				}
             }
         }
