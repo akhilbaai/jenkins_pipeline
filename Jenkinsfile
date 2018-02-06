@@ -26,7 +26,7 @@ pipeline {
             steps {
 				echo "Build"
 				script {
-					sh("make -C ${root_dir} project1")
+					bat "make -C ${root_dir} project1"
 				}
             }
         }
