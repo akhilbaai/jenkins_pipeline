@@ -27,10 +27,16 @@ pipeline {
             }
         }
         stage('Test') {
-            steps {
-				echo "Test"
-				script {
-					bat "make -C ${root_dir} project2"
+			parallel {
+				stage('Unit Test') {
+					steps {
+						echo "Unit Test"
+					}
+				}
+				stage('Functional Test') {
+					steps {
+						echo "Functional Test"
+					}
 				}
             }
         }
